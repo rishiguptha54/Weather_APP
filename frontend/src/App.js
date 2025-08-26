@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import Search from "./pages/Search";
 import Dashboard from "./pages/Dashboard";
 import "./App.css";
@@ -7,9 +7,24 @@ function App() {
   return (
     <Router>
       <nav className="navbar">
-        <Link to="/">Search</Link>
-        <Link to="/dashboard">Dashboard</Link>
+        <div className="nav-logo">🌦 WeatherApp</div>
+        <div className="nav-links">
+          <NavLink 
+            to="/" 
+            end
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Search
+          </NavLink>
+          <NavLink 
+            to="/dashboard" 
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Dashboard
+          </NavLink>
+        </div>
       </nav>
+
       <Routes>
         <Route path="/" element={<Search />} />
         <Route path="/dashboard" element={<Dashboard />} />
